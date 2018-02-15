@@ -2,14 +2,9 @@ import React from 'react';
 
 import './Button.scss';
 
-function handleClick(e) {
-    
-}
-
 function Button(props) {
-
     return (
-        <button className="chackbox icon" onClick={ handleClick }>
+        <button className="chackbox icon" onClick={ props.handleClick }>
             <i className="material-icons">{ props.type }</i>
         </button>
     );

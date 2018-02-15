@@ -1,3 +1,5 @@
+$prime-placeholder : rgba(117, 117, 117, .8);
+
 .input-todo-form {
     display: flex;
     padding: 10px;
@@ -20,11 +22,27 @@
         display: block;
         width: 100%;
         padding: 0 10px;
-        font-size: 15px;
+        font-size: 17px;
         line-height: 1.8em;
         outline-color: #61dafb;
         border: 1px solid silver;
         border-radius: 2px;
+
+        &::-webkit-input-placeholder {
+            color: $prime-placeholder;
+        }
+
+        &::-moz-placeholder {
+            color: $prime-placeholder;
+        }
+
+        &:-moz-placeholder {
+            color:$prime-placeholder;
+        }
+
+        &:-ms-input-placeholder {
+            color:$prime-placeholder;
+        }
     }
 
     input[type="submit"] {

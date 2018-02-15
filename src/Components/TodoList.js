@@ -10,7 +10,14 @@ function TodoList(props) {
             {
                 list.map(e => {
                     return (
-                        <TodoItem key={ e.id } title={ e.title }/>
+                        <TodoItem 
+                            key={ e.id }
+                            id={ e.id }
+                            title={ e.title }
+                            completed = { e.completed }
+                            handleItemStatusChange={ props.handeleStatusChange }
+                            handleDeleteTodo={ props.handleDeleteTodo }
+                        />
                     );
                 })
             }

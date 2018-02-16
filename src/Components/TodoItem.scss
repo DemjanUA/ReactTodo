@@ -1,12 +1,36 @@
 .todo-item {
     border-top: 1px solid rgba(0,0,0,.1);
 
-    button:first-child {
+    button.chackbox {
         float: left;
     }
 
-    button:last-child {
+    button.edit-btn,
+    button.delete-btn {
         float: right;
+        margin-left: 5px;
+    }
+
+    .edit-inp {
+        float: left;
+        min-width: 70%;
+
+        label {
+            display: block;
+
+            input[type="text"] {
+                display: block;
+                width: 100%;
+                padding: 0 0 0 10px;
+                font-size: 16px;
+                line-height: 32px;
+                color: inherit;
+                font-family: inherit;
+                border: none;
+                background: transparent;
+                outline-color: #61dafb;
+            }
+        }
     }
 
     .title {

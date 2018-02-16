@@ -10,36 +10,40 @@ class Todo extends Component {
         
         this.state = {
             todoList : [
-                {id : 0, title : 'Todo1', completed : false},
-                {id : 1, title : 'Todo2', completed : false},
-                {id : 2, title : 'Todo3', completed : false}
+                {id : 0, title : 'Todo 1', completed : false},
+                {id : 1, title : 'Todo 2', completed : false},
+                {id : 2, title : 'Todo 3', completed : false},
+                {id : 3, title : 'Todo 4', completed : false}
             ]
         };
-        this._id = this.state.todoList.length;
 
-        this.handeleStatusChange = this.handeleStatusChange.bind(this);
-        this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
-        this.handleAddTodo = this.handleAddTodo.bind(this);
+        this._id = this.state.todoList.length;
     }
 
     getNextId() {
         return this._id++; 
     }
 
-    handleAddTodo(title) {
-        console.log(title)
+    handleAddTodo = (title) => {
         let todos = [...this.state.todoList, {id : this.getNextId(), title, completed : false}];
-        console.log(todos)
 
         this.setState({ todoList : todos });
     }
 
-    handleDeleteTodo(id) {
-        let todos = this.state.todoList.filter(e => {
+    handleDeleteTodo = (id) => {
+        let todos = this.state.todoList.filter(e => (e.id !== id));
+
+        this.setState({
+            todoList : todos
+        });
+    }
+
+    handleTodosTitleChange = (id, title) => {
+        let todos = this.state.todoList.map(e => {
             if (e.id === id) {
-                return false;
+                e.title = title;
             }
-            return true;
+            return e;
         });
 
         this.setState({
@@ -47,7 +51,7 @@ class Todo extends Component {
         });
     }
 
-    handeleStatusChange(id) {
+    handeleStatusChange = (id) => {
         let todos = this.state.todoList.map(e => {
             if (e.id === id) {
                 e.completed = !e.completed;
@@ -62,6 +66,7 @@ class Todo extends Component {
 
     render() {
         let { todoList } = this.state;
+        
         return (
             <div className="todo-wrappeer">
                 <div className="header">
@@ -69,8 +74,9 @@ class Todo extends Component {
                 </div>
                 <TodoList 
                     list={ todoList }
-                    handeleStatusChange={ this.handeleStatusChange }
+                    handeleStatusChange = { this.handeleStatusChange }
                     handleDeleteTodo = { this.handleDeleteTodo }
+                    handleTodosTitleChange = { this.handleTodosTitleChange }
                 />
                 <Form 
                     handleAddTodo={ this.handleAddTodo }
